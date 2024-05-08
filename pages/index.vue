@@ -4,15 +4,17 @@
       <h1 class="text-5xl text-amber-600 font-bold">Find <span class="text-red-600">best Resuturents</span> near you</h1>
       <div class="w-[80%] my-2 ">
             <USelect 
-            class="w-[30%]"
+            class="w-[30%] mx-auto text-left "
             :options="cities"
+            label="Cities"
             />
-            <button class="text-center bg-neutral-300 py-3 px-4 rounded-e">Detect</button>   
+            <button class="text-center bg-neutral-300 py-[13px] px-4 rounded-e">Detect</button>   
              <USelect 
             class="w-[30%]"
             :options="search"
+            label="Search resturents "
             />
-            <button class="bg-amber-500 py-3 px-4 rounded-e">Search</button> 
+            <button class="bg-amber-500 py-[13px] px-4 rounded-e">Search</button> 
              
           </div>
     </div>
