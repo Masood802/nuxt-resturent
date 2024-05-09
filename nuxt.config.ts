@@ -8,5 +8,17 @@ export default defineNuxtConfig({
     { path: 'components', pathPrefix: false },
     {path:'node_modules/nvd-u/components',pathPrefix:false}
   ],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  app: {
+    head: {
+      title: "Nuxt APP",
+      meta: [{ name: "description", content: "Everything about Nuxt 3" }],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        },
+      ],
+    },
+  },
 })

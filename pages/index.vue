@@ -18,7 +18,9 @@
              
           </div>
     </div>
+     <NuxtLink to="/resturents" class="text-2xl text-red-500"> Page</NuxtLink>
   </div>
+ 
 </template>
 
 <script setup>
