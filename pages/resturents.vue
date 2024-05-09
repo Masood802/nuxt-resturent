@@ -20,6 +20,9 @@
             <option value="20">20KM</option>
         </select>
     </div>
+    <div>
+        {{ places }}
+    </div>
     </div>
     <button class="text-sm font-bold bg-pink-500 px-4 py-2 my-4 text-white rounded" 
     @click="findCloseBuyButtonPressed">Find Resturent</button>
