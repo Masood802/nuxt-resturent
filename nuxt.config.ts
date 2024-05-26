@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
+   modules: [
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
   ],
   css: ['nvd-u/u-core.scss'],
   components: [
@@ -19,6 +20,9 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/icon?family=Material+Icons",
         },
       ],
+      script: [
+       {src:"https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC4800J442xrkb5zUzGSEHA5GHHnMmccgc"}
+      ]
     },
   },
 })
