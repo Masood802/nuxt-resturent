@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     { path: 'components', pathPrefix: false },
     {path:'node_modules/nvd-u/components',pathPrefix:false}
   ],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       title: "Nuxt APP",

@@ -1,10 +1,10 @@
 <template>
-  <div class="text-center bg-[url('bg.jpg')] bg-cover bg-opacity-80 bg-center w-full h-[1000px] flex item-center justify-center">
+  <div class="text-center bg-[url('image.jpg')] bg-cover bg-opacity-80 bg-center w-full h-[1000px] flex item-center justify-center">
     <div class="flex flex-col w-full items-center h-screen">
       <h1 class="text-5xl text-amber-600 font-bold">Find <span class="text-red-600">best Places</span> near you</h1>
       <div class="w-[80%] my-3 flex flex-col items-center justify-center">
         <div class="w-full">
-              <label for="cities" class="text-lg  bg-neutral-300 py-2 px-5">Select City:</label>   
+              <label for="cities" class="text-lg text-white  bg-neutral-300 py-2 px-5">Select City:</label>   
               <select name="cities" id="cities" 
               class="w-[30%] py-[12px] text-yellow-600 outline-none" 
               v-model="store.city">
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="w-full my-4">
-              <label for="type" class="text-lg  bg-neutral-300 py-2 px-[48px]">Search Type:</label>   
+              <label for="type" class="text-lg text-white  bg-neutral-300 py-2 px-[48px]">Search Type:</label>   
               <select name="types" 
               class="w-[30%] py-[12px] text-yellow-600 outline-none" 
               v-model="store.selectedtype">                
@@ -23,8 +23,8 @@
               class="py-1 my-1 text-center text-lg hover:bg-neutral-300">{{ type}}</option>
             </select>
         </div>
-            <button class="bg-amber-500 w-[40%] h-12 rounded text-cneter text-white text-lg font-semibold " 
-            @click="store.searchRestaurants">Search</button>        
+            <button class="bg-amber-500 w-[40%] h-12 rounded text-cneter text-white text-lg font-semibold relative " 
+            @click="store.searchRestaurants">Search <i class="material-icons absolute top-4 left-[57%]">search</i></button>        
         </div>
         <div v-if="store.isloading" class="flex gap-2 items-center">
               <div class="text-semibold text-center text-amber-500">Fetching data....</div>    
