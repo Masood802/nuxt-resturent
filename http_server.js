@@ -49,7 +49,7 @@ app.post('/status', async(req, res) => {
             waitUntil: 'domcontentloaded',
             timeout: 60000,
         });
-      await sleep(6000);
+      await sleep(3000);
    let data = await extractItems(page);
       data = JSON.stringify(data)
       console.log(data)
