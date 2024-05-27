@@ -42,17 +42,22 @@ app.get("/test", (req, res) => {
 app.post('/status', async(req, res) => {
    const coordinates = req.body.coordinate;
     const type = req.body.type;
-    const browser = await puppeteer.launch({ headless: true });
+    try {
+        const browser = await puppeteer.launch({ headless: true });
         const [page] = await browser.pages();
         
         await page.goto(`https://www.google.com/maps/search/${type}/@${coordinates},13z`,{
             waitUntil: 'domcontentloaded',
             timeout: 60000,
         });
-      await sleep(3000);
+      await sleep(6000);
    let data = await extractItems(page);
       data = JSON.stringify(data)
       console.log(data)
       await browser.close();
     res.send(data);      
+    } catch (e) {
+        console.error(e);
+    }
+    
 });

@@ -6,7 +6,9 @@ export const useMainStore = defineStore('mainstore', {
         isloading: false,
         city: '',
         selectedtype: '',
-        selected:{},
+        coordinates:'',
+        selected: {},
+        location:'',
         types: ['Restaurants', 'Hospitals', 'Banks', 'Shpping Malls'],
         cities:
             [
@@ -51,12 +53,43 @@ export const useMainStore = defineStore('mainstore', {
                     console.error('error Massage:', e)
                 })
         },
-        getdetails(id) {
+        getdetails(id)
+        {
             let router = useRouter();
             this.selected = JSON.parse(localStorage.getItem('data')).find((item) => item.id === id);
             console.log('selected', this.selected)
             router.push('/itemdetail')
-                      }
-    },
-    
+        },
+        getlocation()
+        {
+            navigator.geolocation.getCurrentPosition(
+        position => {
+                    this.coordinates = `${position.coords.latitude},${position.coords.longitude}`; 
+         },
+        error => {
+            console.log('Error getting location');
+                })
+            setTimeout(() => {
+             this.getStreetAddress();
+            }, 2000);
+               
+        },
+        getStreetAddress() {
+    const url=`https://maps.googleapis.com/maps/api/geocode/json?latlng=
+        ${this.coordinates}&key=AIzaSyC4800J442xrkb5zUzGSEHA5GHHnMmccgc`
+    axios.get(url)
+	.then(response => {
+        if (response.data.error_massage) {
+            console.log(response.data.error_massage);
+        }
+        else
+        {
+            console.log('coords',this.coordinates)
+            this.location = response.data.results[1].formatted_address;
+        }
+	}).catch(error => {
+		console.log(error.message);
+	});
+}
+    },    
 })
