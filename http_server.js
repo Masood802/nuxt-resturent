@@ -69,8 +69,7 @@ app.post('/status', async(req, res) => {
     else {
     try {
         const browser = await puppeteer.launch({ headless: true });
-        const [page] = await browser.pages();
-        
+        const [page] = await browser.pages();   
         await page.goto(`https://www.google.com/maps/search/${type}/@${coordinates},13z`,{
             waitUntil: 'domcontentloaded',
             timeout: 60000,
@@ -83,7 +82,5 @@ app.post('/status', async(req, res) => {
     } catch (e) {
         console.error(e);
     }    
-    }
-    
-    
+    }   
 });
