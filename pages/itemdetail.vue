@@ -9,6 +9,7 @@
             </div>     
             <h1 class="text-xl font-semibold text-amber-500">{{item.title}}</h1>
             <h2 class="text-lg"> Address: {{ item.address }}</h2>
+            <h2 class="text-lg" v-if="item.phone_num">Phone-Number:{{ item.phone_num }}</h2>
             <h3 class="text-lg">Rating: {{ item.avg_rating }} <i class="material-icons text-[18px] text-amber-500 ">star</i></h3>
             <p class="text
             -lg">Status & Timings: {{ item.description }}</p>

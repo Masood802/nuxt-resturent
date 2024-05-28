@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center bg-[url('image.jpg')] bg-cover bg-opacity-80 bg-center w-full h-[1000px] flex item-center justify-center">
+  <div class="text-center bg-[url('image.jpg')] bg-cover bg-opacity-80 bg-center w-full h-[200vh] flex item-center justify-center">
     <div class="flex flex-col w-full items-center h-screen">
       <h1 class="text-5xl text-amber-600 font-bold">Find <span class="text-red-600">best Places</span> near you</h1>
       <div class="w-[80%] my-3 flex flex-col items-center justify-center">
@@ -7,7 +7,7 @@
               <label for="cities" class="text-lg text-white  bg-amber-300 py-2 px-5">Select City:</label>   
               <select name="cities" id="cities" 
               class="w-[30%] py-[12px] text-yellow-600 outline-none" 
-              v-model="store.city" required>
+              v-model="store.coordinates" required @change="store.location=''">
               <option value="" class="text-center text-amber-300 py-2">Cities</option>
                 <option v-for="city in store.cities" 
                 :key="city.id" 
@@ -31,7 +31,16 @@
               class="py-1 my-1 text-center text-lg hover:bg-neutral-300">{{ type}}</option>
             </select>
         </div>
-            <button class="bg-amber-500 w-[40%] h-12 rounded text-cneter text-white text-lg font-semibold relative " 
+        <div class="w-full my-2">
+              <label for="radius" class="text-lg text-white  bg-blue-400 py-2 px-[44px]">Select Radius:</label>   
+              <select name="adius" 
+              class="w-[30%] py-[12px] text-yellow-600 outline-none" 
+              v-model="store.radius">                
+              <option v-for="r in rad" :key="r" :value="r*1000"
+              class="py-1 my-1 text-center text-lg hover:bg-neutral-300">{{r}}KM</option>
+            </select>
+        </div>
+            <button class="bg-amber-500 w-[40%] h-12 rounded text-cneter text-white text-lg font-semibold relative mt-2" 
             @click="store.searchRestaurants">Search <i class="material-icons absolute top-4 left-[57%]">search</i></button>        
         </div>
         <div v-if="store.isloading" class="flex gap-2 items-center">
@@ -54,6 +63,7 @@
 <script setup>
 import { useMainStore } from '~/stores/restaurants';
 const store = useMainStore();
+const rad=[5,10,15,20,25]
 </script>
 <style>
 #loading{
